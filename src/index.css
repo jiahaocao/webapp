@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.debug-info {
+  display: block;
+}
+
+* {
+  font-family: 'Roboto';
+}
+
+h2 {
+  padding: 20px;
+  color:#555555;
+}
+
+p {
+  font-size: large;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 0;
+  margin-top: 0;
+  color:#555555;
+}
+
+.nav-bar a {
+  text-decoration: none;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+};
+
+/* Welcome Pagee */
+.welcome-page {
+  margin: auto;
+  width: 80%;
+}
+
+.welcome-page h2 {
+  text-align: center;
+}
+
+.welcome-page p {
+  text-align: center;
+}
+
+.broken-page h2 {
+  text-align: center;
+}
+
+/* Survey Pagee */
+.survey-page .survey-question {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.survey-page input {
+  margin-right: 10px;
+}
+
+.survey-page textarea {
+  width: 100%;
+  padding: 10px 10px;
+  margin: 10px 0;
+  border: 1px solid #dddddd;
+}
+
+/*
+width: 100%;
+padding: 6px 10px;
+margin: 10px 0;
+border: 1px solid #ddd;
+box-sizing: border-box;
+display: block;
+*/
+
+.survey-page .survey-option {
+  margin-left: 40px;
+}
+
+.survey-page .survey-question {
+  margin-top: 20px;
+}
+
+/* Gallery Page */
+.col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.gallery-page .container {
+  margin-top: 20px;
+}
+
+.gallery-page .card-text {
+  padding: 0;
+}
+
+.gallery-page .card-body {
+  text-align: center;
+}
+
+/* Select1 Page */
+.select1-page .container {
+  margin-top: 20px;
+}
+
+.select1-page .card-text {
+  padding: 0;
+}
+
+.select1-page .card-body {
+  text-align: center;
+}
+
+/* Select2 Page */
+.select2-page .tree {
+  margin-left: 20px;
+  margin-right: 20px;
+}
