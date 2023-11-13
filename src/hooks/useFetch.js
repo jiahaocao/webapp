@@ -12,12 +12,10 @@ const useFetch = (url) => {
     setTimeout(() => {
       fetch(url, { signal: abortControl.signal })
         .then(res => {
-          console.log(1);
           if (res.ok) return res.json();
           else throw Error("Could not fetch data");
         })
         .then(data => {
-          console.log(2);
           setData(data);
           setIsLoading(false);
           setError(null);

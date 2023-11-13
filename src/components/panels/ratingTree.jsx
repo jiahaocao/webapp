@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import Stars from '../widgets/Stars';
 
 const Item = (props) => {
-  const { root, opened, cb } = props;
+  const { root, cb } = props;
 
   // Tree Item Head.
   const treeItemHead = (
     <div className="tree-item-head">
-      <input type="checkbox" value={root.key} onClick={cb(root.key)}
-        checked={opened.has(root.key)} onChange={() => {}}/>
+      <Stars name={root.key} count="5" cb={cb} />
       <span>{root.key}</span>
     </div>
   );
 
   // Tree Item Body.
   let treeItemBody = null;
-  if (opened.has(root.key)) {
+  if (root.children.length > 0) {
     const treeItemBodyContent = root.children
-    .map((child) => (<li key={child.key}><Item root={child} opened={opened} cb={cb} /></li>));
+    .map((child) => (<li key={child.key}><Item root={child} cb={cb} /></li>));
     treeItemBody = (
       <div className="tree-item-body">
         <ul>
@@ -35,10 +35,10 @@ const Item = (props) => {
 }
 
 const Tree = (props) => {
-  const { root, opened, cb } = props;
+  const { root, cb } = props;
   return (
     <div className="tree">
-      <Item root={root} opened={opened} cb={cb} />
+      <Item root={root} cb={cb} />
     </div>
   );
 }

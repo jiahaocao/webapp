@@ -4,6 +4,10 @@
   display: block;
 }
 
+.debug-info strong {
+  color: #880000;
+}
+
 * {
   font-family: 'Roboto';
 }
@@ -67,21 +71,16 @@ p {
   border: 1px solid #dddddd;
 }
 
-/*
-width: 100%;
-padding: 6px 10px;
-margin: 10px 0;
-border: 1px solid #ddd;
-box-sizing: border-box;
-display: block;
-*/
-
 .survey-page .survey-option {
   margin-left: 40px;
 }
 
 .survey-page .survey-question {
   margin-top: 20px;
+}
+
+.survey-page .survey-question p {
+  margin-bottom: 5px;
 }
 
 /* Gallery Page */
@@ -119,4 +118,47 @@ display: block;
 .select2-page .tree {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.select2-page input {
+  margin: 5px 10px;
+}
+
+.select2-page li {
+  list-style: none;
+}
+
+/* Input Page */
+.input-page .form-range {
+  margin: 30px;
+  width: 150px;
+  display: inline;
+}
+
+
+/* Survey Pagee */
+.input-page .input-question {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.input-page input {
+  margin-right:ß 10px;
+}
+
+.input-page .input-option {
+  margin-left: 40px;
+}
+
+.input-page .input-question {
+  margin-top: 20px;
+}
+
+.input-page .input-question p {
+  margin-bottom: 5px;
+}
+
+.summary-page Form {
+  text-align: center;
+  margin: 50px;
 }

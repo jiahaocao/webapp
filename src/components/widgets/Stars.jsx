@@ -1,24 +1,15 @@
 import Form from 'react-bootstrap/Form'
 
-const Stars = () => {
+const Stars = (props) => {
+  const { name, count, cb } = props;
+  const content = [];
+  for (let i = 0; i < count; ++i)
+    content.push(<Form.Check type="radio"
+      name={name} key={name+i} value={i+1} onClick={cb(name)} inline />);
   return (
-    <div className="stars">
-      <Form>
-        <div>
-        <Form.Check
-          inline
-          checked
-          type="radio"
-          name="name"
-          />
-        <Form.Check
-          inline
-          type="radio"
-          name="name"
-          />
-        </div>
-      </Form>
-    </div>
+    <span className="stars">
+      {content}
+    </span>
   );
 }
 

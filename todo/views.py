@@ -63,3 +63,10 @@ def criteria(request):
     return HttpResponse(get_data())
 
 
+################################################################################
+
+def submit(request):
+    ujson = request.POST['ujson']
+    html = '<h2>result<h2>'
+    html += '<p>' + ujson + '</p>'
+    return HttpResponse(html)

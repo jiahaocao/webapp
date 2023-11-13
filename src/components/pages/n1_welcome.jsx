@@ -13,7 +13,6 @@ class WelcomePage extends React.Component {
           The goal of this study is to test the usability of a new tool designed to assist people in making purchase decisions.
           Please follow the instructions to complete an online task.
         </p>
-        <Stars />
       </div>
     );
   }
