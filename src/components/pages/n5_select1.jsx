@@ -8,6 +8,8 @@ const SelectPage1 = (props) => {
   const display = { display: current == number ? 'block' : 'none' };
 
   const url = "http://127.0.0.1:8000/todo/criteria/";
+  //const url = "http://www.jiahaocao.com/myapp/criteria/";
+  
   const { data: criteria, isLoading, error } = useFetch(url);
 
   const [selected, setSelected] = useState(new Set());

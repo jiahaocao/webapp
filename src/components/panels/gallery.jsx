@@ -13,11 +13,14 @@ const ProductCol = (props) => {
     var buttonVariant = "secondary";
   }
 
+  const url = "http://127.0.0.1:8000/todo/weights/";
+  //const url = "http://www.jiahaocao.com/myapp/weights/";
+
   return (
     <Card>
       <Card.Img
         variant="top"
-        src={`http://127.0.0.1:8000/todo/product/${product.id}`}
+        src={url}
         alt={product.brand + " " + product.model}
       />
       <Card.Body>

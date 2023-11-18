@@ -8,6 +8,8 @@ const GalleryPage = (props) => {
   const display = { display: current == number ? "block" : "none" };
 
   const url = "http://127.0.0.1:8000/todo/product/";
+  //const url = "http://www.jiahaocao.com/myapp/product/";
+  
   const { data: products, isLoading, error } = useFetch(url);
 
   const [selected, setSelected] = useState(new Set());

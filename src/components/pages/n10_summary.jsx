@@ -18,21 +18,27 @@ const SummaryPage = (props) => {
   };
 
   const [result, setResult] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
+
+  const url = "http://127.0.0.1:8000/todo/weights/";
+  //const url = "http://www.jiahaocao.com/myapp/weights/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
     setTimeout(() => {
-      fetch("http://127.0.0.1:8000/todo/weights/", {
+      fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data, null, 2),
       })
         .then((res) => {
           if (res.ok) return res.json();
-          else throw Error("Could not fetch data");
+          else {
+            throw Error("Could not fetch data");
+          }
         })
         .then((data) => {
           console.log("data", typeof data);
@@ -40,6 +46,14 @@ const SummaryPage = (props) => {
           setResult(data["result"]);
           setIsLoading(false);
           setError(null);
+        })
+        .catch(err => {
+          if (err.name === 'AbortError')
+            console.log("Fetch aborted");
+          else {
+            setIsLoading(false);
+            setError(err.message);
+          }
         });
     }, 500);
   };
