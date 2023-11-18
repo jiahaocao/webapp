@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import useFetch from '../hooks/useFetch';
 import Gallery2 from '../panels/gallery2';
+import { Alert } from 'react-bootstrap';
 
 const SelectPage1 = (props) => {
   const { current, number, cb } = props;
-  const style = { display: current == number ? 'block' : 'none' };
+  const display = { display: current == number ? 'block' : 'none' };
 
   const url = "http://127.0.0.1:8000/todo/criteria/";
   const { data: criteria, isLoading, error } = useFetch(url);
@@ -31,10 +31,12 @@ const SelectPage1 = (props) => {
   }, [selected]);
 
   return (
-    <div className="select1-page" style={style}>
+    <section className="select1-page" style={display}>
       <h2>Select Criteria</h2>
-      {error && <p>{error}</p>}
-      {isLoading && <p>Loading...</p>}
+
+      {error && <Alert variant="danger">{error}</Alert>}
+      {isLoading && <Alert variant="warning">Loading</Alert>}
+
       {
         criteria && <Gallery2 criteria={criteria.children} selected={selected} cb={onSelect} />
       }
@@ -45,7 +47,7 @@ const SelectPage1 = (props) => {
           {Array.from(selected).join(', ')}
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 

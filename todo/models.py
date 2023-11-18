@@ -13,6 +13,12 @@ class Product(models.Model):
     brand = models.CharField(max_length=128)
     model = models.CharField(max_length=128)
     image = models.ImageField(upload_to='product')
+
+    system = models.CharField(max_length=32)
+    price = models.IntegerField()
+    ram = models.IntegerField()
+    rom = models.IntegerField()
+
     def __str__(self):
         return self.brand + ' ' + self.model
 

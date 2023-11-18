@@ -28,7 +28,7 @@ const useFetch = (url) => {
             setError(err.message);
           }
         });
-    }, 500);  // simulate loading, wait 500ms
+    }, 1000);  // simulate loading, wait 500ms
     return () => abortControl.abort();
   }, [url]);  // empty dependency array
   return {data, isLoading, error};

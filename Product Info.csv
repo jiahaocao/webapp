@@ -1,0 +1,20 @@
+Model,Brand,Price,System,RAM,ROM
+iPhone 15,Apple,950,iOS,6,128
+iPhone 15 Plus,Apple,1100,iOS,6,128
+iPhone 15 Pro,Apple,1200,iOS,8,128
+iPhone 15 Pro Max,Apple,1500,iOS,8,256
+iPhone 14,Apple,855,iOS,6,128
+iPhone 14 Plus,Apple,960,iOS,6,128
+iPhone 14 Pro,Apple,1190,iOS,6,128
+iPhone 14 Pro Max,Apple,1350,iOS,6,128
+iPhone SE 2022,Apple,535,iOS,4,64
+Galaxy S23 Ultra,Samsung,1160,Android,8,256
+Galaxy S23,Samsung,755,Android,8,128
+Pixel 6,Google,470,Android,8,128
+Find X5 Pro,Oppo,680,Android,12,256
+Galaxy S22,Samsung,625,Android,8,128
+13 Pro 5G,Xiaomi,1270,Android,12,256
+Pixel 7,Google,565,Android,8,128
+Pixel 7 Pro,Google,830,Android,12,128
+50,Honor,475,Android,6,128
+Phone (1),Nothing,380,Android,8,128

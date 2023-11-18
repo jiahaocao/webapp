@@ -1,53 +1,77 @@
-import React from "react";
-import cookie from "react-cookies";
+import React, { useState } from "react";
+import { Alert, Button } from "react-bootstrap";
+import RankTable from "../panels/RankTable";
 
 const SummaryPage = (props) => {
-  const { current, number } = props;
-  const style = { display: current == number ? "block" : "none" };
+  const { current, number, summary } = props;
+  const display = { display: current == number ? "block" : "none" };
 
-  const { productsSelected, subcriteriaSelected, ratings } = props;
+  const { productsSelected, subcriteriaSelected, ratings } = summary;
+  const { survey, inputs } = summary;
 
   const data = {
     productsSelected: Array.from(productsSelected),
     subcriteriaSelected: Array.from(subcriteriaSelected),
     ratings,
+    survey,
+    inputs,
   };
 
-  const csrftoken = cookie.load("csrftoken");
-  console.log("cookie1: " + cookie.load("csrftoken"));
-  
-  return (
-    <div className="summary-page" style={style}>
-      <h2>Summary</h2>
-      <p>
-        <strong>productsSelected:</strong>
-        {productsSelected && Array.from(productsSelected).join(", ")}
-      </p>
-      <p>
-        <strong>subcriteriaSelected:</strong>
-        {subcriteriaSelected && Array.from(subcriteriaSelected).join(", ")}
-      </p>
-      <p>
-        <strong>ratings:</strong>
-        {ratings &&
-          Object.keys(ratings)
-            .map((key) => `(${key}, ${ratings[key]})`)
-            .join(", ")}
-      </p>
+  const [result, setResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-      <form action="http://127.0.0.1:8000/todo/submit/" method="post">
-      <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
-        <input
-          type="text"
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setTimeout(() => {
+      fetch("http://127.0.0.1:8000/todo/weights/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data, null, 2),
+      })
+        .then((res) => {
+          if (res.ok) return res.json();
+          else throw Error("Could not fetch data");
+        })
+        .then((data) => {
+          console.log("data", typeof data);
+          console.log(data["result"]);
+          setResult(data["result"]);
+          setIsLoading(false);
+          setError(null);
+        });
+    }, 500);
+  };
+
+  return (
+    <section className="summary-page" style={display}>
+      <h2>Summary</h2>
+
+      {error && <Alert variant="danger">{error}</Alert>}
+      {isLoading && <Alert variant="warning">Loading</Alert>}
+
+      {result && <RankTable rankList={result} />}
+
+      <span style={{
+        display: "inline-block",
+        position: "relative",
+        }}>
+        <textarea
+          cols="40"
+          rows="10"
           id="ujson"
           name="ujson"
-          value={JSON.stringify(data)}
-        />
-        <button type="submit">
-          Submit
-        </button>
-      </form>
-    </div>
+          value={JSON.stringify(data, null, 2)}>
+        </textarea>
+        <Button onClick={handleSubmit}
+        style={{
+          position: "absolute",
+          right: "20px",
+          bottom: "20px",
+        }}>Submit</Button>
+      </span>
+    </section>
   );
 };
 

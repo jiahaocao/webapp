@@ -6,12 +6,11 @@ class GoaltreePage extends React.Component {
         const style={display: current == number ? 'block' : 'none'};
 
         return (
-            <div className="goaltree-page" style={style}>
+            <section className="goaltree-page" style={style}>
             <h2>Visualization</h2>
-            </div>
+            </section>
         );
     }
 }
 
 export default GoaltreePage;
-

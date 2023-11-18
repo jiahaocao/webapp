@@ -5,7 +5,7 @@ const Stars = (props) => {
   const content = [];
   for (let i = 0; i < count; ++i)
     content.push(<Form.Check type="radio"
-      name={name} key={name+i} value={i+1} onClick={cb(name)} inline />);
+      name={name} key={name+i} value={i+1} onClick={cb} inline />);
   return (
     <span className="stars">
       {content}

@@ -11,13 +11,13 @@ const App = () => {
     <Router>
     <div className="App">
       <NavBar />
-      <div className="content">
+      <main>
         <Routes>
           <Route path="/" element={<ParentPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/feedback" element={<Feedback />} />
         </Routes>
-      </div>
+      </main>
     </div>
     </Router>
   );

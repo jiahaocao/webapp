@@ -1,46 +1,52 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
-.debug-info {
+.card,
+.card-body,
+.card-title,
+.card-text {
+  margin: 0;
+  padding: 0;
+}
+
+.global-debug-info {
   display: block;
 }
 
-.debug-info strong {
+.global-debug-info strong {
   color: #880000;
 }
 
 * {
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 h2 {
+  margin: 0;
   padding: 20px;
-  color:#555555;
+  color: #555555;
 }
 
 p {
+  padding: 10px;
   font-size: large;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: 0;
   margin-top: 0;
-  color:#555555;
+  margin-bottom: 0;
+  color: #555555;
 }
 
 .nav-bar a {
   text-decoration: none;
 }
 
-.content {
+main {
   margin-left: auto;
   margin-right: auto;
   max-width: 800px;
-};
-
-/* Welcome Pagee */
-.welcome-page {
-  margin: auto;
-  width: 80%;
 }
+
+
+/******************************************************************************/
+/***** Welcome & Broken Page **************************************************/
 
 .welcome-page h2 {
   text-align: center;
@@ -54,10 +60,20 @@ p {
   text-align: center;
 }
 
-/* Survey Pagee */
+.broken-page p {
+  text-align: center;
+}
+
+/******************************************************************************/
+/***** Survey Pagee ***********************************************************/
+
 .survey-page .survey-question {
-  padding-bottom: 20px;
+  padding: 10px;
   border-bottom: 1px solid #eeeeee;
+}
+
+.survey-page .survey-options {
+  margin-left: 40px;
 }
 
 .survey-page input {
@@ -65,59 +81,107 @@ p {
 }
 
 .survey-page textarea {
-  width: 100%;
-  padding: 10px 10px;
-  margin: 10px 0;
+  display: block;
+  width: 90%;
+  margin: 10px 40px;
+  padding: 10px;
   border: 1px solid #dddddd;
 }
 
-.survey-page .survey-option {
-  margin-left: 40px;
+/******************************************************************************/
+/***** Gallery Pagee **********************************************************/
+
+.gallery-page .container {
+  margin: 20px 0;
 }
 
-.survey-page .survey-question {
-  margin-top: 20px;
-}
-
-.survey-page .survey-question p {
-  margin-bottom: 5px;
-}
-
-/* Gallery Page */
-.col {
+.gallery-page .col {
   padding-left: 0;
   padding-right: 0;
 }
 
-.gallery-page .container {
-  margin-top: 20px;
+.gallery-page .card {
+  text-align: center;
+  margin: 15px auto;
+  height: 90%;
+  padding: 15px;
+  width: 130px;
+  border: 0;
+}
+
+.gallery-page .card img {
+  object-fit: contain;
+  height: 150px;
 }
 
 .gallery-page .card-text {
-  padding: 0;
+  display: block;
+  margin: 0.2em 0;
 }
 
 .gallery-page .card-body {
   text-align: center;
 }
 
-/* Select1 Page */
+.gallery-page .card-blank {
+  height: 38px;
+}
+
+.gallery-page .card-body button {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+/******************************************************************************/
+/***** Select1 Pagee **********************************************************/
+
 .select1-page .container {
-  margin-top: 20px;
+  margin: 20px 0;
+}
+
+.select1-page .card {
+  text-align: center;
+  margin: 15px auto;
+  height: 90%;
+  padding: 15px;
+  width: 200px;
+  border-color: #dddddd;
+}
+
+.select1-page .card-title {
+  display: block;
+  margin: 0.2em 0;
 }
 
 .select1-page .card-text {
-  padding: 0;
+  display: block;
+  margin: 0.2em 0;
 }
 
-.select1-page .card-body {
-  text-align: center;
+.select1-page .card-blank {
+  height: 38px;
 }
 
-/* Select2 Page */
+.select1-page .card-body button {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+/******************************************************************************/
+/***** Gaoltree Pagee *********************************************************/
+
+
+
+/******************************************************************************/
+/***** Select2 Pagee **********************************************************/
+
 .select2-page .tree {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .select2-page input {
@@ -128,22 +192,49 @@ p {
   list-style: none;
 }
 
-/* Input Page */
+/******************************************************************************/
+/***** Rating Pagee ***********************************************************/
+
+.rating-page .tree {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.rating-page .tree-item-head {
+  padding: 0.2em;
+  padding-left: 0.5em;
+  border-bottom: 1px dashed #aaaaaa;
+}
+
+.rating-page .tree-item-head .left {
+  float: left;
+}
+
+.rating-page .tree-item-head .stars {
+  display: block;
+  text-align: right;
+}
+
+.rating-page li {
+  list-style: none;
+}
+
+/******************************************************************************/
+/***** Inputs Pagee ***********************************************************/
+
 .input-page .form-range {
   margin: 30px;
   width: 150px;
   display: inline;
 }
 
-
-/* Survey Pagee */
 .input-page .input-question {
   padding-bottom: 20px;
   border-bottom: 1px solid #eeeeee;
 }
 
 .input-page input {
-  margin-right:ß 10px;
+  margin-right: 10px;
 }
 
 .input-page .input-option {
@@ -158,7 +249,23 @@ p {
   margin-bottom: 5px;
 }
 
+/******************************************************************************/
+/***** Summary Pagee **********************************************************/
+
 .summary-page Form {
   text-align: center;
   margin: 50px;
+}
+
+.summary-page textarea {
+  font-family: monospace;
+}
+
+/******************************************************************************/
+/***** Products Pagee *********************************************************/
+
+.products-page .reg-table {
+  display: block;
+  padding: 10px 40px;
+  font-size: 14px;
 }
