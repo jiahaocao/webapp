@@ -11,8 +11,9 @@ import RatingPage from "./n8_rating";
 import InputPage from "./n9_input";
 import SummaryPage from "./n10_summary";
 import ProductsPage from "./n11_products";
+import GoaltreePage from "./n7_goeltree";
 
-const NUM_PAGES = 10;
+const NUM_PAGES = 11;
 
 class ParentPage extends React.Component {
   constructor() {
@@ -152,10 +153,20 @@ class ParentPage extends React.Component {
     );
 
     pages.push(
-      <RatingPage
+      <GoaltreePage
         key="page7"
         current={this.state.currentPage}
         number="7"
+        criteria={this.state.criteria}
+        subcriteriaSelected={this.state.subcriteriaSelected}
+      />
+    );
+
+    pages.push(
+      <RatingPage
+        key="page8"
+        current={this.state.currentPage}
+        number="8"
         criteria={this.state.criteria}
         criteriaSelected={this.state.criteriaSelected}
         subcriteriaSelected={this.state.subcriteriaSelected}
@@ -165,18 +176,18 @@ class ParentPage extends React.Component {
 
     pages.push(
       <InputPage
-        key="page8"
+        key="page9"
         current={this.state.currentPage}
-        number="8"
+        number="9"
         cb={this.getInputs}
       />
     );
 
     pages.push(
       <SummaryPage
-        key="page9"
+        key="page10"
         current={this.state.currentPage}
-        number="9"
+        number="10"
         summary={{
           productsSelected: this.state.productsSelected,
           subcriteriaSelected: this.state.subcriteriaSelected,
@@ -189,9 +200,9 @@ class ParentPage extends React.Component {
 
     pages.push(
       <ProductsPage
-        key="page10"
+        key="page11"
         current={this.state.currentPage}
-        number="10"
+        number="11"
         products={this.state.products}
         productsSelected={this.state.productsSelected}
       />
@@ -208,7 +219,7 @@ class ParentPage extends React.Component {
     };
 
     return (
-      <div className="p-5">
+      <div className="parent-page">
         {pages}
         <PageTurn
           handler={this.onPageTurn}

@@ -51,6 +51,7 @@ const SelectPage2 = (props) => {
   if (rootChildren.length === 0) {
     return (
       <div className="select2-page" style={display}>
+        <h2>Select Sub-Criteria</h2>
         <Alert variant="warning">You haven't selected your criteria.</Alert>
       </div>
     );

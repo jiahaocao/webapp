@@ -76,7 +76,8 @@ const SummaryPage = (props) => {
           rows="10"
           id="ujson"
           name="ujson"
-          value={JSON.stringify(data, null, 2)}>
+          value={JSON.stringify(data, null, 2)}
+          onChange={() => {}}>
         </textarea>
         <Button onClick={handleSubmit}
         style={{

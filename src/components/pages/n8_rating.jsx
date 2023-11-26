@@ -41,6 +41,7 @@ const RatingPage = (props) => {
   if (tree == null) {
     return (
       <div className="rating-page" style={style}>
+        <h2>Ratings</h2>
         <Alert variant="warning">You haven't selected your criteria.</Alert>
       </div>
     );
@@ -56,7 +57,7 @@ const RatingPage = (props) => {
 
   return (
     <section className="rating-page" style={style}>
-      <h2>Rating</h2>
+      <h2>Ratings</h2>
       <RatingTree root={tree} cb={onSelect} />
       <div className="debug-info">
         <h2>Debug Info</h2>

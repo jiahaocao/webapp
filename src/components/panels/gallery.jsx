@@ -13,8 +13,8 @@ const ProductCol = (props) => {
     var buttonVariant = "secondary";
   }
 
-  const url = "http://127.0.0.1:8000/todo/weights/";
-  //const url = "http://www.jiahaocao.com/myapp/weights/";
+  const url = `http://127.0.0.1:8000/todo/product/${product.id}`;
+  //const url = `http://www.jiahaocao.com/myapp/product/${product.id}`;
 
   return (
     <Card>

@@ -21,6 +21,7 @@ const PageTurn = (props) => {
   for (let i = 1; i <= total; ++i) {
     items.push(
       <OverlayTrigger
+        key={i}
         placement="top"
         delay={{ show: 0, hide: 0 }}
         overlay={(props) => {
