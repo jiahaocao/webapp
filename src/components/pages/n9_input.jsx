@@ -38,9 +38,9 @@ const InputPage = (props) => {
         <div className="input-question">
           <p>Question 2: Which operating system do you prefer?</p>
           <div className="input-option">
-            <input type="radio" name="q2" onChange={(e) => setSystemPref(e.target.value)} value="android" />
+            <input type="radio" name="q2" onChange={(e) => setSystemPref(e.target.value)} value="Android" />
             <label>Android (Pixel, Samsung, etc.)</label><br />
-            <input type="radio" name="q2" onChange={(e) => setSystemPref(e.target.value)} value="ios" />
+            <input type="radio" name="q2" onChange={(e) => setSystemPref(e.target.value)} value="iOS" />
             <label>iOS (Apple iPhone)</label><br />
           </div>
         </div>
@@ -58,9 +58,9 @@ const InputPage = (props) => {
         <div className="input-question">
           <p>Question 4: What weight of phone do you prefer?</p>
           <div className="input-option">
-            <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="lighter" /> <label>Lighter</label><br />
+            <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="light" /> <label>Lighter</label><br />
             <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="medium" /> <label>Medium</label><br />
-            <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="heavier" /> <label>Heavier</label><br />
+            <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="heavy" /> <label>Heavier</label><br />
             <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="none" /> <label>No Prefrence</label><br />
           </div>
         </div>

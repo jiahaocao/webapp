@@ -6,7 +6,8 @@ urlpatterns = [
     path('product/<int:pk>/', views.product_image, name="product_image"),
     path('criteria/', views.criteria, name="criteria"),
     path('weights/', views.weights, name="weights"),
-    #path('product_info/', views.product_info, name="product_info"),
+    path('goaltree/', views.goaltree, name="goaltree"),
+    path('result/', views.result, name="result"),
 ]
 
 

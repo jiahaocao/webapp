@@ -19,22 +19,25 @@ class Product(models.Model):
     ram = models.IntegerField()
     rom = models.IntegerField()
 
+    aux = models.TextField(blank=True)
+
     def __str__(self):
         return self.brand + ' ' + self.model
 
 class Criteria(models.Model):
-    criteria_title = models.CharField(max_length=32)
-    criteria_text = models.CharField(max_length=512, blank=True)
-    utility_func = models.TextField(blank=True)
+    title = models.CharField(max_length=32)
+    text = models.CharField(max_length=512, blank=True)
+    func = models.TextField(blank=True)
 
     def __str__(self):
-        return 'Criteria - %s' % self.criteria_title
+        return 'Criteria - %s' % self.title
 
     def to_dict(self):
         content = {
             'key': 'cri' + str(self.pk),
-            'title': self.criteria_title,
-            'text':  self.criteria_text,
+            'title': self.title,
+            'text': self.text,
+            'func': self.func,
             'children': [],
         }
         for sub in self.subcriteria_set.all():
@@ -43,18 +46,19 @@ class Criteria(models.Model):
 
 class Subcriteria(models.Model):
     criteria = models.ForeignKey(Criteria, on_delete=models.CASCADE)
-    subcriteria_title = models.CharField(max_length=32)
-    subcriteria_text = models.CharField(max_length=512, blank=True)
-    utility_func = models.TextField(blank=True)
+    title = models.CharField(max_length=32)
+    text = models.CharField(max_length=512, blank=True)
+    func = models.TextField(blank=True)
 
     def __str__(self):
-        return 'Subcriteria - %s' % self.subcriteria_title
+        return 'Subcriteria - %s' % self.title
 
     def to_dict(self):
         content = {
             'key': 'sub' + str(self.pk),
-            'title': self.subcriteria_title,
-            'text':  self.subcriteria_text,
+            'title': self.title,
+            'text':  self.text,
+            'func': self.func,
             'children': [],
         }
         for var in self.variable_set.all():
@@ -63,18 +67,19 @@ class Subcriteria(models.Model):
 
 class Variable(models.Model):
     subcriteria  = models.ForeignKey(Subcriteria, on_delete=models.CASCADE)
-    variable_title = models.CharField(max_length=32)
-    variable_text = models.CharField(max_length=512, blank=True)
-    utility_func = models.TextField(blank=True)
+    title = models.CharField(max_length=32)
+    text = models.CharField(max_length=512, blank=True)
+    func = models.TextField(blank=True)
 
     def __str__(self):
-        return 'Variable - %s' % self.variable_title
+        return 'Variable - %s' % self.title
 
     def to_dict(self):
         content = {
             'key': 'var' + str(self.pk),
-            'title': self.variable_title,
-            'text':  self.variable_text,
+            'title': self.title,
+            'text':  self.text,
+            'func': self.func,
             'children': [],
         }
         return content

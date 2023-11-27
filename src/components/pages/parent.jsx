@@ -26,9 +26,9 @@ class ParentPage extends React.Component {
       criteriaSelected: new Set(),
       subcriteriaSelected: new Set(),
       ratings: null,
-
       survey: null,
       inputs: null,
+      scores: null,
     };
   }
 
@@ -82,11 +82,19 @@ class ParentPage extends React.Component {
     });
   };
 
+  getScores = (scores) => {
+    this.setState(() => {
+      return {
+        scores: scores,
+      };
+    });
+  };
+
   onPageTurn = (type) => {
     return (event) => {
       let currentPage = this.state.currentPage;
-      if (type == "prev") currentPage = Math.max(1, currentPage - 1);
-      if (type == "next") currentPage = Math.min(NUM_PAGES, currentPage + 1);
+      if (type === "prev") currentPage = Math.max(1, currentPage - 1);
+      if (type === "next") currentPage = Math.min(NUM_PAGES, currentPage + 1);
       if (typeof type == "number") {
         currentPage = type;
         currentPage = Math.max(1, currentPage);
@@ -101,13 +109,13 @@ class ParentPage extends React.Component {
   };
 
   render() {
-    const actionStyle = {
-      position: "fixed",
-      bottom: "30px",
-      right: "30px",
-      background: "rgba(255,255,255,0.9)",
-      borderRadius: "10px",
-    };
+    // const actionStyle = {
+    //   position: "fixed",
+    //   bottom: "30px",
+    //   right: "30px",
+    //   background: "rgba(255,255,255,0.9)",
+    //   borderRadius: "10px",
+    // };
 
     const pages = [];
     pages.push(
@@ -195,6 +203,7 @@ class ParentPage extends React.Component {
           survey: this.state.survey,
           inputs: this.state.inputs,
         }}
+        cb={this.getScores}
       />
     );
 
@@ -205,6 +214,7 @@ class ParentPage extends React.Component {
         number="11"
         products={this.state.products}
         productsSelected={this.state.productsSelected}
+        scores={this.state.scores}
       />
     );
 
@@ -232,6 +242,7 @@ class ParentPage extends React.Component {
             "Gallery",
             "Select1",
             "Select2",
+            "Goaltree",
             "Rating",
             "Input",
             "Summary",

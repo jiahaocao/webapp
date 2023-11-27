@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ReactComponent as GoalTree } from "../assets/graph.svg";
+import { ReactComponent as GoalTree } from "../assets/graph2.svg";
 
 class GoaltreePage extends React.Component {
   componentDidUpdate = function () {

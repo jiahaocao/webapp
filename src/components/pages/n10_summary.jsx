@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Button } from "react-bootstrap";
 import RankTable from "../panels/RankTable";
 
 const SummaryPage = (props) => {
-  const { current, number, summary } = props;
+  const { current, number, summary, cb } = props;
   const display = { display: current == number ? "block" : "none" };
 
   const { productsSelected, subcriteriaSelected, ratings } = summary;
@@ -17,11 +17,12 @@ const SummaryPage = (props) => {
     inputs,
   };
 
-  const [result, setResult] = useState(null);
+  const [weights, setWeights] = useState(null);
+  const [scores, setScores] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
 
-  const url = "http://127.0.0.1:8000/todo/weights/";
+  const url = "http://127.0.0.1:8000/todo/result/";
   //const url = "http://www.jiahaocao.com/myapp/weights/";
 
   const handleSubmit = (e) => {
@@ -42,8 +43,12 @@ const SummaryPage = (props) => {
         })
         .then((data) => {
           console.log("data", typeof data);
-          console.log(data["result"]);
-          setResult(data["result"]);
+          console.log(data["weights"]);
+          setWeights(data["weights"]);
+
+          console.log(data["scores"]);
+          setScores(data["scores"]);
+
           setIsLoading(false);
           setError(null);
         })
@@ -58,6 +63,10 @@ const SummaryPage = (props) => {
     }, 500);
   };
 
+  useEffect(() => {
+    cb(scores);
+  }, [scores])
+
   return (
     <section className="summary-page" style={display}>
       <h2>Summary</h2>
@@ -65,7 +74,7 @@ const SummaryPage = (props) => {
       {error && <Alert variant="danger">{error}</Alert>}
       {isLoading && <Alert variant="warning">Loading</Alert>}
 
-      {result && <RankTable rankList={result} />}
+      {weights && <RankTable rankList={weights} />}
 
       <span style={{
         display: "inline-block",
