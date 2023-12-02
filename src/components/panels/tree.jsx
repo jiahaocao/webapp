@@ -19,6 +19,7 @@ const Item = (props) => {
           onClick={cb(root.key)}
           checked={opened.has(root.key)}
           onChange={() => {}}
+          disabled={level === 1}
         />
         <span>{root.title}</span>
         {root.text ? <MoreInfo text={root.text} /> : <></>}

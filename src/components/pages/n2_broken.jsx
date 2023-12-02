@@ -16,4 +16,3 @@ const BrokenPage = (props) => {
 };
 
 export default BrokenPage;
-

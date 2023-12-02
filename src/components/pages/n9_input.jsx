@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
+import MultiChoice from "../widgets/MultiChoice";
 
 function computeBudget(val) {
-    val = ((val / 100.0)**2 * 1500).toFixed(0);
-    val = (val / 10.0).toFixed(0) * 10;
-    return val;
+  val = ((val / 100.0) ** 2 * 1500).toFixed(0);
+  val = (val / 10.0).toFixed(0) * 10;
+  return val;
 }
 
 const InputPage = (props) => {
   const { current, number, cb } = props;
-  const style = { display: current == number ? 'block' : 'none' };
+  const style = { display: current == number ? "block" : "none" };
 
   const [budget, setBudget] = useState(0);
   const [systemPref, setSystemPref] = useState(0);
@@ -18,12 +19,66 @@ const InputPage = (props) => {
   const [brandPref, setBrandPref] = useState(0);
 
   useEffect(() => {
-    cb({budget: computeBudget(budget), systemPref, sizePref, weightPref, brandPref});
+    cb({
+      budget: computeBudget(budget),
+      systemPref,
+      sizePref,
+      weightPref,
+      brandPref,
+    });
   }, [budget, systemPref, sizePref, weightPref, brandPref]);
 
   const onChange = (e) => {
     setBudget(e.target.value);
-  }
+  };
+
+  const question2 = {
+    question: "Question 2: Which operating system do you prefer?",
+    choices: ["Android", "iOS"],
+    name: "q2",
+    values: ["Android", "iOS"],
+    setter: setSystemPref,
+  };
+
+  const question3 = {
+    question: "Question 3: What size of phone do you prefer?",
+    choices: ["Small", "Medium", "Large", "No Prefrence"],
+    name: "q3",
+    values: ["small", "medium", "large", "none"],
+    setter: setSizePref,
+  };
+
+  const question4 = {
+    question: "Question 4: What weight of phone do you prefer?",
+    choices: ["Lighter", "Medium", "Heavier", "No Prefrence"],
+    name: "q4",
+    values: ["light", "medium", "heavy", "none"],
+    setter: setWeightPref,
+  };
+
+  const question5 = {
+    question: "Question 5: Which brand do you prefer?",
+    choices: [
+      "Apple",
+      "Google",
+      "Honor",
+      "Nothing",
+      "Oppo",
+      "Samsung",
+      "Xiaomi",
+    ],
+    name: "q5",
+    values: [
+      "apple",
+      "google",
+      "honor",
+      "nothing",
+      "oppo",
+      "samsung",
+      "xiaomi",
+    ],
+    setter: setBrandPref,
+  };
 
   return (
     <section className="input-page" style={style}>
@@ -35,48 +90,10 @@ const InputPage = (props) => {
           <Form.Label>${computeBudget(budget)}</Form.Label>
         </div>
 
-        <div className="input-question">
-          <p>Question 2: Which operating system do you prefer?</p>
-          <div className="input-option">
-            <input type="radio" name="q2" onChange={(e) => setSystemPref(e.target.value)} value="Android" />
-            <label>Android (Pixel, Samsung, etc.)</label><br />
-            <input type="radio" name="q2" onChange={(e) => setSystemPref(e.target.value)} value="iOS" />
-            <label>iOS (Apple iPhone)</label><br />
-          </div>
-        </div>
-
-        <div className="input-question">
-          <p>Question 3: What size of phone do you prefer?</p>
-          <div className="input-option">
-            <input type="radio" name="q3" onChange={(e) => setSizePref(e.target.value)} value="small" /> <label>Small</label><br />
-            <input type="radio" name="q3" onChange={(e) => setSizePref(e.target.value)} value="medium" /> <label>Medium</label><br />
-            <input type="radio" name="q3" onChange={(e) => setSizePref(e.target.value)} value="large" /> <label>Large</label><br />
-            <input type="radio" name="q3" onChange={(e) => setSizePref(e.target.value)} value="none" /> <label>No Prefrence</label><br />
-          </div>
-        </div>
-
-        <div className="input-question">
-          <p>Question 4: What weight of phone do you prefer?</p>
-          <div className="input-option">
-            <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="light" /> <label>Lighter</label><br />
-            <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="medium" /> <label>Medium</label><br />
-            <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="heavy" /> <label>Heavier</label><br />
-            <input type="radio" name="q4" onChange={(e) => setWeightPref(e.target.value)} value="none" /> <label>No Prefrence</label><br />
-          </div>
-        </div>
-
-        <div className="input-question">
-          <p>Question 5: Which brand do you prefer?</p>
-          <div className="input-option">
-            <input type="radio" name="q5" onChange={(e) => setBrandPref(e.target.value)} value="apple" /> <label>Apple</label><br />
-            <input type="radio" name="q5" onChange={(e) => setBrandPref(e.target.value)} value="google" /> <label>Google</label><br />
-            <input type="radio" name="q5" onChange={(e) => setBrandPref(e.target.value)} value="honor" /> <label>Honor</label><br />
-            <input type="radio" name="q5" onChange={(e) => setBrandPref(e.target.value)} value="nothing" /> <label>Nothing</label><br />
-            <input type="radio" name="q5" onChange={(e) => setBrandPref(e.target.value)} value="oppo" /> <label>Oppo</label><br />
-            <input type="radio" name="q5" onChange={(e) => setBrandPref(e.target.value)} value="samsung" /> <label>Samsung</label><br />
-            <input type="radio" name="q5" onChange={(e) => setBrandPref(e.target.value)} value="xiaomi" /> <label>Xiaomi</label><br />
-          </div>
-        </div>
+        <MultiChoice {...question2} />
+        <MultiChoice {...question3} />
+        <MultiChoice {...question4} />
+        <MultiChoice {...question5} />
       </form>
 
       <div className="debug-info">
@@ -89,7 +106,6 @@ const InputPage = (props) => {
       </div>
     </section>
   );
-}
+};
 
 export default InputPage;
-

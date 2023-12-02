@@ -49,20 +49,14 @@ main {
 }
 
 /******************************************************************************/
-/***** Welcome & Broken Page **************************************************/
+/***** Welcome & Broken Page ***********************************************************/
 
-.welcome-page h2 {
-  text-align: center;
-}
-
+.welcome-page h2,
 .welcome-page p {
   text-align: center;
 }
 
-.broken-page h2 {
-  text-align: center;
-}
-
+.broken-page h2,
 .broken-page p {
   text-align: center;
 }
@@ -70,12 +64,16 @@ main {
 /******************************************************************************/
 /***** Survey Pagee ***********************************************************/
 
-.survey-page .survey-question {
+.survey-page .multi-choice,
+.survey-page .multi-score
+{
   padding: 10px;
   border-bottom: 1px solid #eeeeee;
 }
 
-.survey-page .survey-options {
+.survey-page .choices,
+.survey-page .scores
+{
   margin-left: 40px;
 }
 
@@ -231,25 +229,22 @@ main {
   display: inline;
 }
 
-.input-page .input-question {
+.input-page .multi-choice {
+  margin-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #eeeeee;
 }
 
-.input-page input {
-  margin-right: 10px;
+.input-page .multi-choice p {
+  margin-bottom: 5px;
 }
 
-.input-page .input-option {
+.input-page .choices {
   margin-left: 40px;
 }
 
-.input-page .input-question {
-  margin-top: 20px;
-}
-
-.input-page .input-question p {
-  margin-bottom: 5px;
+.input-page input {
+  margin-right: 10px;
 }
 
 /******************************************************************************/

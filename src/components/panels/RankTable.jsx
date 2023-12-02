@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 const RankTableRow = (props) => {
   const { rank, criteria, weighting } = props;
   return (
-    <tr key={rank}>
+    <tr>
       <td style={{textAlign: "right"}}>{rank}</td>
       <td>{criteria}</td>
       <td>{weighting.toFixed(3)}</td>
@@ -26,7 +26,7 @@ const RankTable = (props) => {
       <tbody>
       {rankList.map((item, index) => {
         return (
-          <RankTableRow rank={index} criteria={item[0]} weighting={item[1]} />
+          <RankTableRow key={index} rank={index} criteria={item[0]} weighting={item[1]} />
         );
       })}
       </tbody>

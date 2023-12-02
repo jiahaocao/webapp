@@ -1,5 +1,3 @@
-from rest_framework import viewsets
-from .serializers import TodoSerializer
 from django.http import HttpResponse
 
 from .impls.product import product_index

@@ -182,6 +182,8 @@ def result(request):
         scores[prod.model] = score
 
     scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    highest = max([s[1] for s in scores])
+    scores = [(goalname, s / highest) for (goalname, s) in scores]
 
     obj = {'weights': weights, 'scores': scores}
     return HttpResponse(json.dumps(obj))
@@ -201,12 +203,12 @@ def compute_score(prod, weights, utility_funcs, uargs):
             arguments[param] = uargs[param]
 
         score = func(**arguments)
+        score = max(score, 0)
         scores[goalname] = score
 
-    # final_score = 0
-    # for (goalname, weigth) in weights:
-    #     final_score += scores[goalname] * weight
-
-    final_score = sum(scores.values())
+    final_score = 0
+    for (goalname, weigth) in weights:
+        final_score += scores[goalname] * weight
+    
     return final_score
 
